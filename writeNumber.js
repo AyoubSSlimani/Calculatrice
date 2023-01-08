@@ -27,9 +27,9 @@ function writeNumber() {
 }
 
 
-/* 
+
 function eraseNumber() {
         return maDivResultat.textContent = 0;
 }
-*/ 
+
 
