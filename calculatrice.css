@@ -1,0 +1,92 @@
+
+body {
+    margin: auto;
+    margin-top: 5%;
+    width: 26%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: 20px solid grey;
+}
+
+.boite1 {
+    display: flex;
+    align-content: space-around;
+    width: 500px;
+    height: 700px;
+    flex-wrap: wrap;
+    padding: 0;
+    background-color: black;
+}
+
+
+.resultat {
+    width: 700px;
+    height: 80px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.resultat p {
+    font-size: 60px;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.allRound {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 500px;
+}
+
+.rond {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rond, .longRond p {
+    font-size: 40px;
+}
+
+.longRond {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: flex;
+    padding-left: 40px;
+    align-items: center;
+}
+
+.colorGrey {
+    background-color: #a5a5a5;
+}
+
+.colorOrange {
+    background-color: #ff9f0a;
+}
+
+.colorBlack {
+    background-color: #333333;
+}
+
+.colorToucheWhite p{
+    background-color: #ffffff;
+}
+
+.colorOrange p {
+    color: white;
+    background-color: #ff9f0a;
+}
+
+.colorBlack p {
+    color: white;
+    background-color: #333333;
+}

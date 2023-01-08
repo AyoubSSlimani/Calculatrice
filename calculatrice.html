@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calculatrice.css">
+    <title>Calculatrice</title>
+</head>
+<body>
+    <div class="calculatrice">
+        <div class="boite1">
+            <div class="resultat">
+                <p>0</p>
+            </div>
+            <div class="allRound">
+                <div class="rond colorGrey colorToucheBlack" onclick="eraseNumber()">
+                    <p>C</p>
+                </div>
+                <div class="rond colorGrey colorToucheBlack">
+                    <p>+/-</p>
+                </div>
+                <div class="rond colorGrey colorToucheBlack">
+                    <p>%</p>
+                </div>
+                <div class="rond colorOrange colorToucheWhite">
+                    <p>÷</p>
+                </div>
+            </div>
+            <div class="allRound colorToucheWhite">
+                <div class="rond colorBlack nombre" onclick="writeNumber()">
+                    <p>7</p>
+                </div>
+                <div class="rond colorBlack nombre" onclick="writeNumber()">
+                    <p>8</p>
+                </div>
+                <div class="rond colorBlack">
+                    <p>9</p>
+                </div>
+                <div class="rond colorOrange">
+                    <p>x</p>
+                </div>
+            </div>
+            <div class="allRound colorToucheWhite">
+                <div class="rond colorBlack">
+                    <p>4</p>
+                </div>
+                <div class="rond colorBlack">
+                    <p>5</p>
+                </div>
+                <div class="rond colorBlack">
+                    <p>6</p>
+                </div>
+                <div class="rond colorOrange">
+                    <p>-</p>
+                </div>
+            </div>
+            <div class="allRound colorToucheWhite">
+                <div class="rond colorBlack">
+                    <p>1</p>
+                </div>
+                <div class="rond colorBlack">
+                    <p>2</p>
+                </div>
+                <div class="rond colorBlack">
+                    <p>3</p>
+                </div>
+                <div class="rond colorOrange">
+                    <p>+</p>
+                </div>
+            </div>
+            <div class="allRound colorToucheWhite">
+                <div class="longRond colorBlack">
+                    <p>0</p>
+                </div>
+                <div class="rond colorBlack">
+                    <p>,</p>
+                </div>
+                <div class="rond colorOrange">
+                    <p>=</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="writeNumber.js"></script>
+    <script src="addition.js"></script>
+</body>
+</html>
