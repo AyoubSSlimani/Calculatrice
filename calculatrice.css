@@ -53,6 +53,8 @@ body {
 
 .rond, .longRond p {
     font-size: 40px;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .longRond {
@@ -77,16 +79,15 @@ body {
     background-color: #333333;
 }
 
-.colorToucheWhite p{
-    background-color: #ffffff;
+.colorOrange p::first-letter {
+    color: white;
 }
 
-.colorOrange p {
+.colorBlack p::first-letter {
     color: white;
-    background-color: #ff9f0a;
 }
 
-.colorBlack p {
-    color: white;
-    background-color: #333333;
+.rond:hover, .longRond:hover {
+    background-color: lightgray;
+    cursor: pointer; 
 }

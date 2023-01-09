@@ -8,8 +8,6 @@ let numbreAfficher;
 function writeNumber() {
         if(maDivResultat.textContent == 0) {
                 maDivResultat.innerHTML = "";
-                
-                boutonNombre.setAttribute("onclick", "writeNumber()");
         }
 
         let maDiv = document.querySelector(".nombre p");
@@ -18,18 +16,20 @@ function writeNumber() {
         numbreAfficher = monChiffre;
         monResultat = numbreAfficher;
         maDivResultat.innerHTML += numbreAfficher;
+
+        eraseFunctionUsed = false;
         if(maDivResultat.textContent.length >= 9) {
                 //let calculExposent;
                 //calculExposent = Math.pow(parseInt(maDivResultat.textContent), maDivResultat.textContent.length);
-                boutonNombre.removeAttribute("onClick");
+                boutonNombre.removeAttribute("onclick");
         }
-        console.log(monResultat);
 }
 
+let eraseFunctionUsed = false;
 
 
 function eraseNumber() {
+        eraseFunctionUsed = true;
+        boutonNombre.setAttribute("onclick", "writeNumber()");
         return maDivResultat.textContent = 0;
 }
-
-
