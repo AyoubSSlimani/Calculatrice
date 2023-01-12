@@ -1,35 +1,41 @@
 let maDivResultat = document.querySelector(".resultat p");
 let monResultat = maDivResultat.innerHTML;
 
-let boutonNombre = document.querySelector(".nombre");
+let maDivResultatCache = maDivResultat;
 
-let numbreAfficher;
+let nombres = document.querySelectorAll(".nombre");
 
 function writeNumber() {
+
         if(maDivResultat.textContent == 0) {
+                //console.log("un click");
                 maDivResultat.innerHTML = "";
         }
+        //console.log(maDivResultat.textContent);
 
-        let maDiv = document.querySelector(".nombre p");
-        let monChiffre = maDiv.innerHTML;
-
-        numbreAfficher = monChiffre;
-        monResultat = numbreAfficher;
-        maDivResultat.innerHTML += numbreAfficher;
-
-        eraseFunctionUsed = false;
-        if(maDivResultat.textContent.length >= 9) {
-                //let calculExposent;
-                //calculExposent = Math.pow(parseInt(maDivResultat.textContent), maDivResultat.textContent.length);
-                boutonNombre.removeAttribute("onclick");
+        for(const nombre of nombres){
+                nombre.addEventListener('click', function(){
+                        monResultat = nombre.textContent.trim();
+                        //console.log(monResultat);
+                        //console.log(tableResultat);
+                })
+                }
+                maDivResultat.innerHTML += monResultat;        
+        
+                if(maDivResultat.textContent.length >= 9) {
+                for(nombre of nombres){
+                        nombre.removeAttribute("onclick");
+                }
         }
-}
+        }
 
-let eraseFunctionUsed = false;
+
 
 
 function eraseNumber() {
-        eraseFunctionUsed = true;
-        boutonNombre.setAttribute("onclick", "writeNumber()");
-        return maDivResultat.textContent = 0;
+        for(nombre of nombres){
+                nombre.setAttribute("onclick", "writeNumber()");
+        }
+        return maDivResultat.textContent = "0";
 }
+
