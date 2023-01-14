@@ -9,8 +9,6 @@ let tableResultat = [];
 let eraseButton = document.querySelector(".eraseButton");
 
 
-function addition(){
-
     boutonPlus.addEventListener("click", function(){
         boutonPlus.style.backgroundColor = "lightgrey";
         tableResultat.push(maDivResultatCache[0]);
@@ -31,4 +29,3 @@ function addition(){
             })
             }
     }
-}
