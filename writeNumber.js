@@ -2,14 +2,18 @@
 let maDivResultat = document.querySelector(".resultat p");
 let monResultat = maDivResultat.innerHTML;
 
-let maDivResultatCache = maDivResultat;
+let maDivResultatCache = 0;
+let tableResultat = [];
 
 //Je récupère les touches de la calculatrice
 let nombres = document.querySelectorAll(".nombre"); 
+let buttonErase = document.querySelector(".eraseButton");
 
 let limitNumber = false;
 
-for(const nombre of nombres){
+//Fonction qui permet de détecter sur quel nombre on click et qui affiche ce nombre 
+function writeNumber(){
+        for(const nombre of nombres){
 
         nombre.addEventListener("click", function() {
                 if(limitNumber === false){
@@ -17,23 +21,32 @@ for(const nombre of nombres){
                                 maDivResultat.innerHTML = "";
                         } else if(maDivResultat.textContent.length >= 8){
                                 limitNumber = true;
-                        }
-                                
+                        }        
+                                        
                         isButtonNombresClicked = true;
-                        
+                                
                         monResultat = nombre.textContent.trim();
-                        maDivResultat.innerHTML += monResultat;        
+                        maDivResultat.innerHTML += monResultat;  
                         }
+                }
+                )
+                
         }
-        )
 }
+
+writeNumber();
 
 
 //Fonction qui permet d'effacer l'affichage et de le remettre à zéro
 function eraseNumber() {
-        isButtonEraseClicked = true;
-        isButtonNombresClicked = false;
-        limitNumber = false;
-        return maDivResultat.textContent = "0";
+        buttonErase.addEventListener("click", function(){
+                isButtonEraseClicked = true;
+                isButtonNombresClicked = false;
+                isButtonPlusClicked = false;
+                limitNumber = false;
+                tableResultat = [];
+                return maDivResultat.textContent = "0";
+        })
 }
 
+eraseNumber();
