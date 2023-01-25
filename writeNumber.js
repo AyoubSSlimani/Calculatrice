@@ -3,6 +3,7 @@ let maDivResultat = document.querySelector(".resultat p");
 let monResultat = maDivResultat.innerHTML;
 
 let maDivResultatCache = 0;
+let lastResultat = 0;
 let tableResultat = [];
 
 //Je récupère les touches de la calculatrice
@@ -43,8 +44,11 @@ function eraseNumber() {
                 isButtonEraseClicked = true;
                 isButtonNombresClicked = false;
                 isButtonPlusClicked = false;
+                isButtonPlusClicked = false
+                isButtonEgaleClicked = false;
                 limitNumber = false;
                 tableResultat = [];
+                lastResultat = 0;
                 return maDivResultat.textContent = "0";
         })
 }
