@@ -1,2 +1,2 @@
-# Calculatrice
-Projet qui reproduit les fonctionnalité d'une calculatrice 
+# Calculatrice Iphone
+Projet qui reproduit les fonctionnalité d'une calculatrice Iphone
