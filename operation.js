@@ -6,12 +6,12 @@ let buttonDivide = document.querySelector(".division");
 let buttonEgale = document.querySelector(".egale");
 let buttonColorOranges = document.querySelectorAll(".colorOrange");
 let buttonOperations = document.querySelectorAll(".operation");
-
+let operators = document.querySelectorAll(".colorOrange p");
 
 
 //Permet de savoir si un bouton à été cliqué
 let isButtonEraseClicked = false;
-let isButtonNombresClicked = false;
+let isButtonNumberClicked = false;
 let isButtonPlusClicked = false;
 let isButtonMultiplyClicked = false;
 let isButtonMinusClicked = false;
@@ -24,20 +24,39 @@ let countClick = 0;
 
 let eraseButton = document.querySelector(".eraseButton");
 
+//Permet d'ajouter des nombres après la vrigule 
+function numberVirgule(result){
+        let numberBeforeVirgule = result.textContent.split(".")[0];
+        let numberAfterVirgule = result.textContent.split(".")[1];
+        if(numberAfterVirgule < 10){
+            numberAfterVirgule *= 10;
+        }
+        let total = parseInt(numberBeforeVirgule) + (numberAfterVirgule / 100);
+        result.textContent = total;
+}
+
 //Permet d'ajouter des nombres dans un tableau pour les calculer entre eux plus tard 
 function addNumber() {
-    maDivResultatCache = maDivResultat;
-    tableResultat.push(parseInt(maDivResultatCache.textContent));
-    //maDivResultat.innerHTML = ""; 
+    if(isButtonVirguleClicked){
+        numberVirgule(maDivResultat);
+        maDivResultatCache = maDivResultat;
+        tableResultat.push(parseFloat(maDivResultatCache.textContent));
+    } else {
+        maDivResultatCache = maDivResultat;
+        tableResultat.push(parseInt(maDivResultatCache.textContent));
+    }
+
     isButtonEgaleClicked = false;
 }
-addNumber();
+//addNumber();
 
 //Permet de séléctionner un bouton opérateur et d'appeler la fonction addNumber()
 function operation(){
     for (const operateur of buttonOperations){
         operateur.addEventListener("click", function(){
+            isButtonOperationClicked = true;
             addNumber();
+            isButtonVirguleClicked = false;
             switch(operateur.classList[2]) {
                 case "addition": 
                     countClick = 0;
@@ -50,9 +69,6 @@ function operation(){
                     isButtonMinusClicked = false;
                     isButtonMultiplyClicked = false;
                     isButtonPlusClicked = true;
-                    if(isButtonPlusClicked){
-                        operateur.style.backgroundColor = "lightgrey";
-                    }
                     addition();
                     break;
                 case "soustraction": 
@@ -66,11 +82,7 @@ function operation(){
                     isButtonPlusClicked = false;
                     isButtonMultiplyClicked = false;
                     isButtonMinusClicked = true;
-                    if(isButtonMinusClicked){
-                        operateur.style.backgroundColor = "lightgrey";
-                    }
                     soustraction();
-                    console.log(countClick);
                     break;
                 case "multiplication": 
                     countClick = 0;
@@ -109,10 +121,6 @@ function operation(){
         buttonOrange();
 }
 operation();
-//operation(buttonPlus);
-//operation(buttonMinus);
-//operation(buttonMultiply);
-//operation(buttonDivide);
 
 function addition(){
         maDivResultatCache = 0;
@@ -184,19 +192,26 @@ function division(){
 //Permet de donner le résultat suivant l'opération qu'on a effectué
 function egale() {
     buttonEgale.addEventListener("click", function(){
-        buttonEgale.style.backgroundColor = "lightgrey";
+        //buttonEgale.style.backgroundColor = "lightgrey";
         maDivResultatCache = maDivResultat;
-        tableResultat.push(parseInt(maDivResultatCache.textContent));
+        if(isButtonVirguleClicked){
+            numberVirgule(maDivResultat);
+            maDivResultatCache = maDivResultat;
+            tableResultat.push(parseFloat(maDivResultatCache.textContent));
+        } else {
+            tableResultat.push(parseInt(maDivResultatCache.textContent));
+        }
         whatTypeOfOperation();
         isButtonEgaleClicked = true;
     })
 
-    buttonOrange();
+    //buttonOrange();
 }
 egale();
 
 //Permet d'enlever le backgroundColor gris d'un bouton orange lorsque je clique sur un nombre ou sur effacer
 function buttonOrange() {
+
     eraseButton.addEventListener('click', function(){
         for(buttonColorOrange of buttonColorOranges){
             buttonColorOrange.style.backgroundColor = "#ff9f0a";
@@ -208,10 +223,31 @@ function buttonOrange() {
         nombre.addEventListener('click', function(){
             for(buttonColorOrange of buttonColorOranges){
                 buttonColorOrange.style.backgroundColor = "#ff9f0a";
-                isButtonNombresClicked = false;
+                isButtonNumberClicked = false;
             }
         })
         }
+    
+        for(const buttonOperation of buttonOperations){
+            let tab = [];
+            tab.push(buttonOperation);
+
+            buttonOperation.addEventListener('click', function(){
+
+                if(tab[0].className.includes("white")){
+                    toOrange();
+                    
+                } else {
+                    toOrange();
+                    buttonOperation.classList.add("white");
+                    buttonOperation.style.backgroundColor = "white";
+                }
+                
+                
+            })  
+        }
+
+
 }
 
 //fonction qui permet de vérifier l'opération qui a été utilisé
@@ -233,4 +269,13 @@ function whatTypeOfOperation(){
             console.log("opération inconnue");
             break;
     }
+}
+
+//Fonction permettant d'enlever la classe .white d'un bouton et de remettre un background-color orange
+function toOrange(){
+    for(buttonColorOrange of buttonColorOranges){
+        buttonColorOrange.style.backgroundColor = "#ff9f0a";
+        buttonColorOrange.classList.remove("white");
+    }
+
 }

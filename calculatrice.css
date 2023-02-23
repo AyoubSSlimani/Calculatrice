@@ -51,10 +51,6 @@ body {
     align-items: center;
 }
 
-.rond:hover, .longRond:hover {
-    background-color: lightgrey;
-}
-
 .rond, .longRond p {
     font-size: 40px;
     -webkit-user-select: none;
