@@ -32,6 +32,7 @@ function numberVirgule(result){
             numberAfterVirgule *= 10;
         }
         let total = parseInt(numberBeforeVirgule) + (numberAfterVirgule / 100);
+        
         result.textContent = total;
 }
 
