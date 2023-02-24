@@ -28,8 +28,15 @@ let eraseButton = document.querySelector(".eraseButton");
 function numberVirgule(result){
         let numberBeforeVirgule = result.textContent.split(".")[0];
         let numberAfterVirgule = result.textContent.split(".")[1];
+        console.log(numberAfterVirgule);
         if(numberAfterVirgule < 10){
             numberAfterVirgule *= 10;
+        } else if(numberAfterVirgule > 100){
+            let numberToDivide = "10";
+            for(i = 3; i < numberAfterVirgule.length; i++){
+                numberToDivide += "0";
+            }
+            numberAfterVirgule /= numberToDivide;
         }
         let total = parseInt(numberBeforeVirgule) + (numberAfterVirgule / 100);
         result.textContent = total;
